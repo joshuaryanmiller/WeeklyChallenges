@@ -51,17 +51,26 @@ namespace ChallengesWithTestsMark8
         {
             int nullCount = 0;
             foreach (object element in objs) if (element == null) nullCount = nullCount += 1;
-            return nullCount > objs.Count() ? true : false;
+            if (nullCount > (objs.Count() - nullCount)) return true;
+            else { return false; }
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null || numbers.Length == 0) return 0;
+            List<double> evensList = new List<double>();
+            foreach (double i in numbers) if (i%2==0) evensList.Add(i);
+            if (evensList == null) return 0;
+            else if (evensList.Count > 0) return evensList.Average();
+            else { return 0;}
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            int n = Convert.ToInt32(number);
+            if (number < 0) throw new ArgumentOutOfRangeException();
+            else if (number == 0) return 1;
+            else { return n * Factorial(n - 1); }
         }
     }
 }
